@@ -81,9 +81,7 @@ function init() {
         click: onFeatureSelected,
         out: closeTabsInfoWin,
         clickout: closeMenuInfoWin,
-        dblclick: function () {
-            console.log('meeeeeeee')
-        }
+        dblclick: function () {console.log('meeeeeeee')}
     };
     //创建一个矢量选择要素的控件，在指定图层上单击鼠标选择矢量要素。
     selectFeature = new SuperMap.Control.SelectFeature(vectors,

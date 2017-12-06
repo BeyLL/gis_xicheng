@@ -20,13 +20,7 @@ selectFeatureCar = new SuperMap.Control.SelectFeature(vectorsCar,
 /* -------------------------------------添加汽车矢量图层-------------------------------------------*/
 /*-------------------------------------获取车辆列表数据信息---------------------------------*/
 window.car = [];
-function getCarInfo(page) {
-    /**
-     * 添加缓存策略,一段时间内不从服务端获取数据
-     * 缓存时间在config1.js中配置
-     * 缓存时间默认十分钟
-     **/
-     console.log(page);
+function getCarInfo(page) {  //缓存操作
      if(localStorage.getItem("carExpireTime") &&
         localStorage.getItem("carExpireTime")>=new Date().getTime() &&
         localStorage.getItem("car")){
@@ -271,66 +265,6 @@ function closeMenuInfoWinCar(){
         featureShadowCar.destroy();
     }
 }
-//*-------------------------------------获取车辆列表数据信息---------------------------------*/
-//function getCarInfo(){
-//  var getData = {
-//      "mobile": mobile,
-//      "token": token,
-//      "page":-1
-//  };
-//  $.ajax({
-//      url: window.urlName+"/car/getCar",
-//      type: 'POST',
-//      data: getData,
-//      success: function(data){
-//          if(data.code==200){
-//              addMulVectorCar(data.data.data);
-//              openCarPanelAll(data.data.data);
-//          }else{
-//              console.log(data.data.error);
-//          }
-//      },
-//      error: function (XMLHttpRequest, textStatus, errorThrown) {
-//          console.log(XMLHttpRequest);
-//          console.log(textStatus);
-//          console.log(errorThrown);
-//      }
-//  });
-//}
-///*-----------------------------------根据汽车id返回车辆信息-----------------------------*/
-//function selectCarInfoByID(id){
-//  var getIdData = {
-//      "mobile": mobile,
-//      "token": token,
-//      "id": id
-//  };
-//  $.ajax({
-//      url: window.urlName+"/car/getSingleCarInfo",
-//      type: 'POST',
-//      data: getIdData,
-//      async:false,
-//      success: function(data){
-//          if(data.code==200){
-//              car_info=data.data.data[0];
-//          }else if(data.code === 401){
-//              console.log(data.data.error);
-//          }else if(data.code === 501){
-//              console.log(data.data.error);
-//          }else if(data.code === 404){
-//              console.log(data.data.error);
-//          }else if(data.code === 301){
-//              console.log(data.data.error);
-//          }else if(data.code === 500){
-//              console.log(data.data.error);
-//          }
-//      },
-//      error: function (XMLHttpRequest, textStatus, errorThrown) {
-//          console.log(XMLHttpRequest);
-//          console.log(textStatus);
-//          console.log(errorThrown);
-//      }
-//  });
-//}
 
 /*---------------------------------------获取汽车属性-------------------------------------*/
 function getCarAttr() {
@@ -355,7 +289,7 @@ function getCarAttr() {
 }
 /*--------------------------------------定义汽车设置属性---------------------------------*/
 function openCarSettings() {
-    console.log(car_setting)
+    // alert('首先执行的是这个方法')
     var contentHtml = '';
     for (var i = 0; i < car_setting.length; i++) {
         if(car_setting[i].attr_show_2){
@@ -379,7 +313,7 @@ function openCarPanel(cars){
         nodes:Array()
     };//全部
     var police = {
-        text:'警车',
+        text:'车辆',
         href:'javascript:;',
         tags:cars.length,
         state:{expanded: false},
@@ -489,7 +423,7 @@ function openCarPanelAll(cars){
         nodes:Array()
     };//全部
     var police = {
-        text:'警车',
+        text:'车辆',
         href:'javascript:;',
         tags:cars.length,
         state:{expanded: false},
@@ -535,7 +469,7 @@ function openCarPanelAll(cars){
         highlightSelected:true
     });
 }
-/*-------------------------------------清空警车列表-----------------------------------*/
+/*-------------------------------------清空车辆列表-----------------------------------*/
 function closeCarPanel() {
     var config = Array();
     var total = {
@@ -547,7 +481,7 @@ function closeCarPanel() {
         nodes:Array()
     };//全部
     var police = {
-        text:'警车',
+        text:'车辆',
         href:'javascript:;',
         tags:0,
         state:{expanded: false},
@@ -627,7 +561,7 @@ function carHighlight(name,x,y,map){
     });
 
 }
-/*------------------------------------警车选择事件-------------------------------------*/
+/*------------------------------------车辆选择事件-------------------------------------*/
 function carSelected(cars){
 	console.log(cars)
     cars = JSON.parse(cars);
@@ -653,20 +587,17 @@ function carSelected(cars){
     onFeatureHoveredCar1(feature);
     map.setCenter(new SuperMap.LonLat(cars.car_x ,cars.car_y), map.getZoom());
 }
-/*------------------------------------------------搜索警车属性---------------------------------------*/
+/*------------------------------------------------搜索车辆属性---------------------------------------*/
 function searchCarSelect(name,val){  //在这里的时候应该是将name:val; val 是我们输入的值。
-    $("#searchCarSelect").attr('placeholder',name)
-    $("#searchCarSelect").attr('name',val)
-    // console.log($('#searchCarSelect').attr())
-    console.log('车辆的值有了没有')
+    $("#searchCarSelect").attr('placeholder',name)  //执行成功
+    $("#searchCarSelect").attr('name',val);
 }
 function carSearchSettings() {
-	
     if ($("#searchCarSelect").val() == ""){
         win.alert('提示','搜索内容不能为空');
         return
     }
-    if(!$("#searchCamSelect").attr('name')){
+    if(!$("#searchCarSelect").attr('name')){
     	win.alert('提示', '请先选择车辆属性');
     	$("#searchCarSelect").val('');
     	return
