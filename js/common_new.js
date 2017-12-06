@@ -1,6 +1,3 @@
-/**
- * Created by "zhangHeng" on 2017/12/6 0006.
- */
 /*
  * 摄像头列表展现以及摄像头选择事件
  * */
@@ -312,4 +309,4 @@ function dragDiv(nameId) {
             $(document).off("mousemove");
         })
     });
-};
+}

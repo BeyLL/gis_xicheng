@@ -72,7 +72,7 @@ function init() {
         )
     });
 
-    /*---------------------------模拟摄像头矢量图层-------------------------------*/
+    /*---------------------------摄像头矢量图层-------------------------------*/
     //构建 矢量覆盖物 图层。
     vectors = new SuperMap.Layer.Vector("vectors");
     //矢量覆盖物回传事件
@@ -108,6 +108,14 @@ function init() {
 
 //初始化地图
 init();
+/*********************5s refresh car layer*****************************/
+window.carRefreshInterval = setInterval(function(){
+    console.log("auto refresh car");
+    window.car = [];
+    getCarInfo();
+    layerCarPhoto.redraw();
+    layerCar.redraw();
+},5000);
 /*--------------------------将地图添加到地图上------------------------------------*/
 function addLayer() {
     //初始化地图图层

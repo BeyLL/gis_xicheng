@@ -30,7 +30,7 @@ function getCarInfo(page) {  //缓存操作
         console.log("use car in localStorage");
         return;
     }
-    //如果没有传则默认1
+    //如果没有传则默认
     if (!page) {
         page = 1;
     }
@@ -106,33 +106,87 @@ function selectCarInfoByID(id, callback) {
     });
 }
 /*----------------------------添加多个矢量点-----------------------------*/
+// function addMulVectorCar(data){
+//     vectorsCar.removeAllFeatures();
+//     //点特征数组
+//     var point_features = [];
+//     for(var i=0;i < data.length;i++){
+//     	//console.log(data[i])
+//         carX =  data[i].SmX;
+//         carY =  data[i].SmY;
+//         //声明几何图形点
+//         var point = new SuperMap.Geometry.Point(carX, carY);
+//         //声明矢量特征
+//         var feature = new SuperMap.Feature.Vector(point);
+//         //点特征样式
+//         feature.style = {
+//             fillColor: "transparent",//内填充
+//             strokeColor: "transparent",//外边线
+//             pointRadius: 10,//不同图层半径不同按参数r传递
+//             graphicZIndex:data[i].SmID,
+//             dataName:data[i].car_no,
+//             dataAddr:data[i].car_addr,
+//             graphicOpacity:0
+//         };
+//         //添加点特征到点特征数组
+//         point_features.push(feature);
+//     }
+//     //矢量图层添加一组点特征数组
+//     vectorsCar.addFeatures(point_features);
+// }
+var point_features = [];
+var beginCarFeaturesFlag=true;
 function addMulVectorCar(data){
-    vectorsCar.removeAllFeatures();
-    //点特征数组
-    var point_features = [];
-    for(var i=0;i < data.length;i++){
-    	//console.log(data[i])
-        carX =  data[i].SmX;
-        carY =  data[i].SmY;
-        //声明几何图形点
-        var point = new SuperMap.Geometry.Point(carX, carY);
-        //声明矢量特征
-        var feature = new SuperMap.Feature.Vector(point);
-        //点特征样式
-        feature.style = {
-            fillColor: "transparent",//内填充
-            strokeColor: "transparent",//外边线
-            pointRadius: 10,//不同图层半径不同按参数r传递
-            graphicZIndex:data[i].SmID,
-            dataName:data[i].car_no,
-            dataAddr:data[i].car_addr,
-            graphicOpacity:0
-        };
-        //添加点特征到点特征数组
-        point_features.push(feature);
+    /*
+     * 优化刷新时动态添加透明矢量图层
+     * 循环遍历全部车辆坐标信息
+     * 更新车辆坐标改变的透明矢量
+     * 定义全局变量point_features
+     * 定义初始标记beginCarFeaturesFlag
+     * 发现每5秒刷新取数据时会出现数据延时，刷新数量不是30辆
+     */
+    if(beginCarFeaturesFlag==true){
+        //初始添加全部的透明矢量
+        for(var i=0;i < data.length;i++){
+            //console.log(data[i])
+            carX =  data[i].SmX;
+            carY =  data[i].SmY;
+            //声明几何图形点
+            var point = new SuperMap.Geometry.Point(carX, carY);
+            //声明矢量特征
+            var feature = new SuperMap.Feature.Vector(point);
+            //点特征样式
+            feature.style = {
+                fillColor: "transparent",//内填充
+                strokeColor: "red",//外边线
+                pointRadius: 10,//不同图层半径不同按参数r传递
+                graphicZIndex:data[i].SmID,
+                dataName:data[i].car_no,
+                dataAddr:data[i].car_addr,
+                graphicOpacity:0
+            };
+            //添加点特征到点特征数组
+            point_features.push(feature);
+        }
+        //矢量图层添加一组点特征数组
+        vectorsCar.addFeatures(point_features);
+        beginCarFeaturesFlag=false;
+    }else{
+        console.log(beginCarFeaturesFlag);
+        //5秒一刷新动态替换坐标发生改变的矢量
+        var j=0;
+        for(var i=0;i < data.length;i++){
+            if(data[i].SmX!=point_features[i].geometry.x||data[i].SmY!=point_features[i].geometry.y){
+                j++;
+                console.log(data[i].SmX);
+                console.log(point_features[i].geometry.x);
+                point_features[i].geometry.x=data[i].SmX;
+                point_features[i].geometry.y=data[i].SmY;
+            }
+        }
+        console.log(j);
     }
-    //矢量图层添加一组点特征数组
-    vectorsCar.addFeatures(point_features);
+    vectorsCar.redraw();
 }
 /*------------------------------------------左键点击弹出车辆详细信息--------------------------------------------*/
 /*----------------------点击矢量要素覆盖物，调用此函数---------------------*/
@@ -589,7 +643,7 @@ function carSelected(cars){
 }
 /*------------------------------------------------搜索车辆属性---------------------------------------*/
 function searchCarSelect(name,val){  //在这里的时候应该是将name:val; val 是我们输入的值。
-    $("#searchCarSelect").attr('placeholder',name)  //执行成功
+    $("#searchCarSelect").attr('placeholder',name);  //执行成功
     $("#searchCarSelect").attr('name',val);
 }
 function carSearchSettings() {
@@ -620,7 +674,6 @@ function carSearchSettings() {
     };
 
     $.ajax(settings).done(function (response) {
-        console.log(response)
         if(response.code==200){
             openCarPanelSelect(response.data.rows)
             // $("#searchCarSelect").val('');

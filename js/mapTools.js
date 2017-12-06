@@ -1,5 +1,4 @@
-
-//定义全局变量
+//定义的全局变量
 var map,
     layerMap,
     layerCamera,
@@ -55,6 +54,7 @@ var map,
     PolygonFlag = false,
     toolsNum = 0,  //当工具栏点击选中时添加相应数值如绘制1，点选2...
     drawColor = "#1458a7";//tools查询颜色设置
+
 //缓冲区矢量图层
 resultLayer = new SuperMap.Layer.Vector("缓冲");
 console.log(resultLayer)
