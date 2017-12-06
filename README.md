@@ -1,4 +1,4 @@
-##视频专网gis平台文档项目
+##视频专网gis平台项目
 ###技术栈：
 > jquery、jQuery-easing、jquery-jcImgScroll、boostrap、bootstrap-treeview、bootstrap-typeahead、jquery.table2excel
 ###文件介绍
