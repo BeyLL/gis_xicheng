@@ -910,10 +910,8 @@ function camSearchSettings() {
         }
     };
     $.ajax(settings).done(function (response) {
-        console.log(response)
         if (response.code == 200) {
             console.log(response.data.rows);
-            // $("#searchCamSelect").val('');
             openCameraPanelSelect(response.data.rows)
         } else if (response.code === 401) {
             console.log(response.data.error);

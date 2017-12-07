@@ -98,7 +98,7 @@ function init() {
     getCarInfo();
     //初始化警车属性
     getCarAttr();
-    
+
     /*---------------------------鼠标滚轴监听事件-------------------------------*/
     if (document.addEventListener) {
         document.addEventListener('DOMMouseScroll', mousewheelupdate, false);

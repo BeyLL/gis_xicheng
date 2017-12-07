@@ -325,6 +325,7 @@ function closeMenuInfoWinCar(){
 
 /*---------------------------------------获取汽车属性-------------------------------------*/
 function getCarAttr() {
+    console.log('你好，这个是汽车的属性')
     //    初始化属性
     var settings = {
         "url": window.urlName+ "/car/getCarAttrs",
@@ -671,14 +672,14 @@ function carSearchSettings() {
         pageSize: 10
     };
     var settings = {
-        "url": urlName + "/car/getCar",
+        "url": urlName + "/car/pclistbyattr",
         "method": "POST",
         "data":carData
     };
 
     $.ajax(settings).done(function (response) {
+        console.log(response)
         if(response.code==200){
-            console.log(response)
             openCarPanelSelect(response.data)
             // $("#searchCarSelect").val('');
         } else if(response.code === 401){
