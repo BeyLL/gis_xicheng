@@ -20,8 +20,8 @@ selectFeatureCar = new SuperMap.Control.SelectFeature(vectorsCar,
         hover: false
     }, {allowSelectTheSameFeature: true});
 
-/* -------------------------------------添加汽车矢量图层-------------------------------------------*/
-/*-------------------------------------获取车辆列表数据信息---------------------------------*/
+/* -----添加汽车矢量图层------*/
+/*----获取车辆列表数据信息------*/
 window.car = [];
 function getCarInfo(page) {  //缓存操作
      if(localStorage.getItem("carExpireTime") &&
@@ -678,9 +678,9 @@ function carSearchSettings() {
     };
 
     $.ajax(settings).done(function (response) {
-        console.log(response)
+        console.log(response);
         if(response.code==200){
-            openCarPanelSelect(response.data)
+            openCarPanelSelect(response.data.rows)
             // $("#searchCarSelect").val('');
         } else if(response.code === 401){
             console.log(response.data.error);

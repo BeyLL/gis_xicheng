@@ -148,8 +148,8 @@ function addMulVector(data) {
     vectors.addFeatures(point_features);
 }
 
-/*------------------------------------------左键菜单弹框--------------------------------------------*/
-/*----------------------点击矢量要素覆盖物，调用此函数---------------------*/
+/*-----------左键菜单弹框----------*/
+/*-----点击矢量要素覆盖物，调用此函数------*/
 function onFeatureSelected(feature) {
     if (flag == true) {
         return false;
@@ -162,13 +162,20 @@ function onFeatureSelected(feature) {
         "menuInfo",
         new SuperMap.LonLat(feature.geometry.x, feature.geometry.y),
         new SuperMap.Size(125, 140),
-        "<div style='width: 20px;height: 20px;background: rgba(255,255,255,.9);margin-top: 20px;margin-left: -30px;transform: rotate(45deg);border-bottom: 1px solid#999;border-left: 1px solid #999'></div>" +
-        "<div style='position: relative;top:-35px'><li id='zjs' onclick='picture(" + feature.style.graphicZIndex + ");'  style='color: #333333;font-size: 14px;margin:10px 5px 10px 5px;border-bottom:1px solid #bbb;'><p style='display: inline-block; '>图片查看</p></li>" +
-        "<li id='videoplay' onclick='videoPlayClick()' style='color: #333333;font-size: 14px;margin:10px 5px 10px 5px;border-bottom:1px solid #bbb;'><p style='display: inline-block; '>视频查看</p></li>" +
-        "<li id='detailinfo' style='color: #333333;font-size: 14px;margin:10px 5px 10px 5px;border-bottom:1px solid #bbb;'><p style='display: inline-block; '>详细信息</p></li>" +
+        "<div style='width: 20px;height: 20px;background: rgba(255,255,255,.9);margin-top: 20px;" +
+        "margin-left: -30px;transform: rotate(45deg);border-bottom: 1px solid#999;border-left: 1px " +
+        "solid #999'></div>" +
+        "<div style='position: relative;top:-35px'><li id='zjs' onclick='picture(" + feature.style
+            .graphicZIndex + ");'  style='color: #333333;font-size: 14px;margin:10px 5px 10px 5px;border-bottom:" +
+        "1px solid #bbb;'><p style='display: inline-block; '>图片查看</p></li>" +
+        "<li id='videoplay' onclick='videoPlayClick()' style='color: #333333;font-size: 14px;margin:10px" +
+        " 5px 10px 5px;border-bottom:1px solid #bbb;'><p style='display: inline-block; '>视频查看</p></li>" +
+        "<li id='detailinfo' style='color: #333333;font-size: 14px;margin:10px 5px 10px 5px;border-bottom:1" +
+        "px solid #bbb;'><p style='display: inline-block; '>详细信息</p></li>" +
         "<li id='scs' onclick='manage("
         + cam_id +
-        ",\"" + cam_name + "\",\"" + cam_addr + "\")' style='color: #333333;font-size: 14px;margin:10px 5px 10px 5px;'><p style='display: inline-block; '>任务下发</p></li></div>",
+        ",\"" + cam_name + "\",\"" + cam_addr + "\")' style='color: #333333;font-size: 14px;margin:10px " +
+        "5px 10px 5px;'><p style='display: inline-block; '>任务下发</p></li></div>",
         null,
         true);
     map.setCenter(new SuperMap.LonLat(feature.geometry.x, feature.geometry.y), map.getZoom());
@@ -207,9 +214,9 @@ function onFeatureSelected(feature) {
         var contentHtml = "";
         for (var i = 0; i < camera_setting.length; i++) {
             if (camera_setting[i].attr_show_2) {
-                contentHtml += "<li id='gz' style='line-height: 15px;color: #333333;font-size: 14px;padding:10px 5px 5px;'>" +
-                    "<span style='display: inline-block;width: 45%;vertical-align: top'>" + camera_setting[i].attr_desc + "：" + "</span>" +
-                    "<span style='display: inline-block;width: 55%'>" + cam_info[camera_setting[i].attr_name] + "</span></li>"
+                contentHtml += "<li id='gz' style='line-height: 15px;color: #333333;font-size: 14px;padding:10px 5px 5px;border:1px solid red'>" +
+                    "<span style='display: inline-block;width: 45%;vertical-align: top;text-align:right'>" + camera_setting[i].attr_desc + "：" + "</span>" +
+                    "<span style='display: inline-block;width: 55%;text-align:right'>" + cam_info[camera_setting[i].attr_name] + "</span></li>"
 
             }
         }
@@ -218,7 +225,7 @@ function onFeatureSelected(feature) {
     });
 
 }
-/*--------------------------------------------详细信息可拖动---------------------------------------*/
+/*-----------详细信息可拖动-----------*/
 $(function () {
     //创建小方块的jquery对象
     var $cameradetailsWin = $("#cameradetailsWin");
@@ -324,16 +331,15 @@ function closeMenuInfoWin() {
 }
 /*----------------鼠标悬停弹出Tabs popup，调用此函数。------------------*/
 function onFeatureHovered(feature) {
-    console.log('mmmmmm')
     //根据摄像头ID后台获取摄像头信息
     selectCamInfoByID(feature.style.graphicZIndex, function (cam_info) {
         var contentHtml = "";
         contentHtml += "<div style='width: 20px;height: 20px;background: rgba(255,255,255,.9);position: relative;top: 20px;left:-30px;transform: rotate(45deg);border-bottom: 1px solid #999;border-left: 1px solid #999'></div>"
         for (var i = 0; i < camera_setting.length; i++) {
             if (camera_setting[i].attr_show_1) {
-                contentHtml += "<li id='gz' style='line-height: 13px;color: #333333;font-size: 12px;padding:5px;'>" +
-                    "<span style='display: inline-block;width: 30%;vertical-align: top'>" + camera_setting[i].attr_desc + "：" + "</span>" +
-                    "<span style='display: inline-block;width: 70%;text-overflow: ellipsis;overflow: hidden;white-space: nowrap'>" + cam_info[camera_setting[i].attr_name] + "</span></li>"
+                contentHtml += "<li id='gz' style='line-height: 13px;color: #333333;font-size: 12px;padding:5px;border:1px solid royalblue;border-bottom:none'>" +
+                    "<span style='display: inline-block;width: 45%;vertical-align: top;text-align:right'>" + camera_setting[i].attr_desc + "：" + "</span>" +
+                    "<span style='display: inline-block;width: 55%;text-align:right'>" + cam_info[camera_setting[i].attr_name] + "</span></li>"
             }
         }
         var popup1 = new SuperMap.Popup(
@@ -350,16 +356,17 @@ function onFeatureHovered(feature) {
         $('#tabsInfo').css({
             'left': parseInt($('#tabsInfo').css('left')) + 36 + "px",
             'top': parseInt($('#tabsInfo').css('top')) - 36 + "px",
+            'padding':'0 5px 5px 0',
             'width': '280px',
             'height': '',
             'border': '1px solid #999',
             'box-shadow': '2px 2px 12px #999',
-            'background': 'rgba(255,255,255,.9)',
+            'background': 'rgba(255,255,255,.9)'
         });
         $('#tabsInfo_contentDiv').css({
             'width': '100%',
-            'height': '100%',
-            'margin-bottom': '20px'
+            'height': '100%'
+            // 'border-bottom':'1px solid royalblue'
         });
         console.log(flag);
         if (flag == true) {
