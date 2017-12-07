@@ -594,6 +594,7 @@ function numSelect(num) {
     if ($("#search").val() != "") {
         searchLocation();
     }
+    hcQuery();
 }
 //地名地址模糊查询
 $("#search").typeahead({

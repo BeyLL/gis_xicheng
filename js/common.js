@@ -92,7 +92,7 @@ function startPics(totalPics) {
         imgheight: 24,//每张图片的高度偏移量
         count: totalPics,
         offsetX: 0,
-        NumBtn: true,
+        NumBtn: false,
         title: false,
         setZoom: .8,
     });
