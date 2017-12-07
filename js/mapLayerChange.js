@@ -98,6 +98,14 @@ function init() {
     getCarInfo();
     //初始化警车属性
     getCarAttr();
+    
+    /*---------------------------鼠标滚轴监听事件-------------------------------*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', mousewheelupdate, false);
+
+    }//W3C
+    window.onmousewheel = document.onmousewheel = mousewheelupdate;//IE/Opera/Chrome
+
 
 }
 
@@ -424,37 +432,31 @@ function changeLayer() {
 }
 /*--------------------------滚轮滑动时纠正弹窗位置------------------------------------*/
 
-/*---------------------------鼠标滚轴监听事件-------------------------------*/
-if (document.addEventListener) {
-    document.addEventListener('DOMMouseScroll', mousewheelupdate, false);
-    console.log('zhangheng滚轮事件触发了')
-}//W3C
-window.onmousewheel = document.onmousewheel = mousewheelupdate;//IE/Opera/Chrome
+function mousewheelupdate(e){
+    if(e.wheelDelta>0)
+    {
+        if(jb==map.getNumZoomLevels()-1){fla=true}
+        if(jb<map.getNumZoomLevels()-1)
+        {jb++;var fla=false}
 
-function mousewheelupdate(e) {
-    if (e.wheelDelta > 0) {
-        if (jb == map.getNumZoomLevels() - 1) {
-            fla = true
-        }else if(jb < map.getNumZoomLevels() - 1) {
-            jb++;
-           fla = false
-        }
-
-    } else {
-        if (jb > 0) {
+    }else{
+        if(jb>0)
+        {
             jb--;
-            fla = false
-        } else if (jb == 0) {
-            fla = true
+            var fla=false
+        }
+        if(jb==0){
+            fla=true
         }
     }
-    if (jb == map.getZoom() && fla == false) {
+    if(jb==map.getZoom()&&fla==false) {
         updatePop();
-    } else if (jb != map.getZoom()) {
-        jb = map.getZoom()
+    }
+    if(jb!=map.getZoom()){
+        jb=map.getZoom()
     }
 }
-function updatePop() {
+function updatePop(){
     $('#menuInfo').css({
         'left': parseInt($('#menuInfo').css('left')) + 36 + "px",
         'top': parseInt($('#menuInfo').css('top')) - 36 + "px",
@@ -468,34 +470,34 @@ function updatePop() {
     $('#tabsInfo1').css({
         'left': parseInt($('#tabsInfo1').css('left')) + 36 + "px",
         'top': parseInt($('#tabsInfo1').css('top')) - 36 + "px",
-        'width': '280px',
-        'border': '1px solid #999',
-        'box-shadow': '2px 2px 12px #999',
-        'background': 'rgba(255,255,255,.9)',
+        'width':'280px',
+        'border':'1px solid #999',
+        'box-shadow':'2px 2px 12px #999',
+        'background':'rgba(255,255,255,.9)',
     });
     $('#tabsInfo').css({
         'left': parseInt($('#tabsInfo').css('left')) + 36 + "px",
         'top': parseInt($('#tabsInfo').css('top')) - 36 + "px",
-        'width': '280px',
-        'border': '1px solid #999',
-        'box-shadow': '2px 2px 12px #999',
-        'background': 'rgba(255,255,255,.9)',
+        'width':'280px',
+        'border':'1px solid #999',
+        'box-shadow':'2px 2px 12px #999',
+        'background':'rgba(255,255,255,.9)',
     });
     $('#tabsInfoCar1').css({
         'left': parseInt($('#tabsInfoCar1').css('left')) + 36 + "px",
         'top': parseInt($('#tabsInfoCar1').css('top')) - 36 + "px",
-        'width': '280px',
-        'border': '1px solid #999',
-        'box-shadow': '2px 2px 12px #999',
-        'background': 'rgba(255,255,255,.9)',
+        'width':'280px',
+        'border':'1px solid #999',
+        'box-shadow':'2px 2px 12px #999',
+        'background':'rgba(255,255,255,.9)',
     });
     $('#tabsInfoCar').css({
         'left': parseInt($('#tabsInfoCar').css('left')) + 36 + "px",
         'top': parseInt($('#tabsInfoCar').css('top')) - 36 + "px",
-        'width': '280px',
-        'border': '1px solid #999',
-        'box-shadow': '2px 2px 12px #999',
-        'background': 'rgba(255,255,255,.9)',
+        'width':'280px',
+        'border':'1px solid #999',
+        'box-shadow':'2px 2px 12px #999',
+        'background':'rgba(255,255,255,.9)',
     });
     $('#featureShadow').css({
         'left': parseInt($('#featureShadow').css('left')) - 25 + "px",
@@ -540,49 +542,49 @@ function updatePop() {
         'z-index': '3329'
     });
     $('#cameraSelected').css({
-        'left': parseInt($('#cameraSelected').css('left')) - 15 + "px",
-        'top': parseInt($('#cameraSelected').css('top')) - 15 + "px",
-        'width': '30px',
-        'height': '30px',
-        'border-radius': '50%',
-        'background': '#ff0000',
-        'opacity': '.4',
-        'z-index': '3329'
+        'left':parseInt($('#cameraSelected').css('left')) - 15 +"px",
+        'top':parseInt($('#cameraSelected').css('top')) -15+"px",
+        'width':'30px',
+        'height':'30px',
+        'border-radius':'50%',
+        'background':'#ff0000',
+        'opacity':'.4',
+        'z-index':'3329'
     });
     $('#carSelected').css({
-        'left': parseInt($('#carSelected').css('left')) - 15 + "px",
-        'top': parseInt($('#carSelected').css('top')) - 15 + "px",
-        'width': '30px',
-        'height': '30px',
-        'border-radius': '50%',
-        'background': '#ff0000',
-        'opacity': '.4',
-        'z-index': '3329'
+        'left':parseInt($('#carSelected').css('left')) - 15 +"px",
+        'top':parseInt($('#carSelected').css('top')) -15+"px",
+        'width':'30px',
+        'height':'30px',
+        'border-radius':'50%',
+        'background':'#ff0000',
+        'opacity':'.4',
+        'z-index':'3329'
     });
     for (var i = 0; i < cam_selectId.length; i++) {
         //console.log(cam_selectId)
         $("#" + cam_selectId[i]).css({
-            'left': parseInt($("#" + cam_selectId[i]).css('left')) - 15 + "px",
-            'top': parseInt($("#" + cam_selectId[i]).css('top')) - 15 + "px",
-            'width': '30px',
-            'height': '30px',
-            'border-radius': '50%',
-            'background': 'rgba(20,88,167,.3)',
-            'opacity': '.4',
-            'z-index': '3329'
+            'left':parseInt($("#" + cam_selectId[i]).css('left')) - 15 +"px",
+            'top':parseInt($("#" + cam_selectId[i]).css('top')) -15+"px",
+            'width':'30px',
+            'height':'30px',
+            'border-radius':'50%',
+            'background':'rgba(20,88,167,.3)',
+            'opacity':'.4',
+            'z-index':'3329'
         });
     }
     for (var i = 0; i < car_selectId.length; i++) {
         //console.log(cam_selectId)
         $("#" + car_selectId[i]).css({
-            'left': parseInt($("#" + car_selectId[i]).css('left')) - 15 + "px",
-            'top': parseInt($("#" + car_selectId[i]).css('top')) - 15 + "px",
-            'width': '30px',
-            'height': '30px',
-            'border-radius': '50%',
-            'background': 'rgba(20,88,167,.3)',
-            'opacity': '.4',
-            'z-index': '3329'
+            'left':parseInt($("#" + car_selectId[i]).css('left')) - 15 +"px",
+            'top':parseInt($("#" + car_selectId[i]).css('top')) -15+"px",
+            'width':'30px',
+            'height':'30px',
+            'border-radius':'50%',
+            'background':'rgba(20,88,167,.3)',
+            'opacity':'.4',
+            'z-index':'3329'
         });
     }
 }
@@ -660,7 +662,7 @@ function searchCircle(x, y, radius) {
     var circleVector = new SuperMap.Feature.Vector(circleP);
     vectorSearch.addFeatures([circleVector]);
 
-    //从服务端拉去选中的数据
+    //从服务端拉取选中的数据
     cameraSelectCircle(x, y, radius, function (cameras) {
         if (layerFlagNum == 2) {
             return

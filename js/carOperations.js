@@ -427,14 +427,14 @@ function openCarPanel(cars){
 function openCarPanelSelect(cars){
 	map.removeAllPopup();
     saveData('carsList',cars);
-    var config = Array();
+    var config = [];
     var total = {
         text:'查询结果',
         href:'javascript:;',
         tags:cars.length,
         state:{expanded: true},
         selectable:true,
-        nodes:Array()
+        nodes:[]
     };
     car_selectId=[];
     for(var i=0; i<cars.length; i++){
@@ -659,7 +659,7 @@ function carSearchSettings() {
     	$("#searchCarSelect").val('');
     	return
     }
-    var attrName = $("#searchCarSelect").attr('name');  //在这里的时候没有值？？？？
+    var attrName = $("#searchCarSelect").attr('name');  //在这里的时候没有值,因为之前的id名拼写写错。
     var attrValue = $("#searchCarSelect").val();
     console.log(attrValue,attrName)
     var carData = {
@@ -671,14 +671,15 @@ function carSearchSettings() {
         pageSize: 10
     };
     var settings = {
-        "url": urlName + "/car/pclistbyattr",
+        "url": urlName + "/car/getCar",
         "method": "POST",
         "data":carData
     };
 
     $.ajax(settings).done(function (response) {
         if(response.code==200){
-            openCarPanelSelect(response.data.rows)
+            console.log(response)
+            openCarPanelSelect(response.data)
             // $("#searchCarSelect").val('');
         } else if(response.code === 401){
             console.log(response.data.error);

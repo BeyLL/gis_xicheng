@@ -1,3 +1,4 @@
+
 /*
  * 摄像头列表展现以及摄像头选择事件
  * */
@@ -309,4 +310,4 @@ function dragDiv(nameId) {
             $(document).off("mousemove");
         })
     });
-}
+};
