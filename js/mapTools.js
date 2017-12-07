@@ -57,7 +57,7 @@ var map,
 
 //缓冲区矢量图层
 resultLayer = new SuperMap.Layer.Vector("缓冲");
-console.log(resultLayer)
+console.log(resultLayer);
 //缓冲区输入
 $('#searchSelect').blur(function () {
     if ($('#searchSelect').val() != '') {

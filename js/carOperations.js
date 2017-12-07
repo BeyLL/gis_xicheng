@@ -4,6 +4,7 @@
 /*------------------------------------------------汽车---------------------------------------------------*/
 //构建 矢量覆盖物 图层。
 vectorsCar = new SuperMap.Layer.Vector("vectorsCar");
+
 //矢量覆盖物回传事件
 callbacksCar = {
     over: onFeatureHoveredCar,
@@ -11,12 +12,14 @@ callbacksCar = {
     out: closeTabsInfoWinCar,
     clickout: closeMenuInfoWinCar
 };
+
 //创建一个矢量选择要素的控件，在指定图层上单击鼠标选择矢量要素。
 selectFeatureCar = new SuperMap.Control.SelectFeature(vectorsCar,
     {
         callbacks: callbacksCar,
         hover: false
     }, {allowSelectTheSameFeature: true});
+
 /* -------------------------------------添加汽车矢量图层-------------------------------------------*/
 /*-------------------------------------获取车辆列表数据信息---------------------------------*/
 window.car = [];

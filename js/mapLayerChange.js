@@ -98,27 +98,12 @@ function init() {
     getCarInfo();
     //初始化警车属性
     getCarAttr();
-    /*---------------------------鼠标滚轴监听事件-------------------------------*/
-    if (document.addEventListener) {
-        document.addEventListener('DOMMouseScroll', mousewheelupdate, false);
-    }//W3C
-    window.onmousewheel = document.onmousewheel = mousewheelupdate;//IE/Opera/Chrome
 
 }
 
-//初始化地图
-init();
-/*********************5s refresh car layer*****************************/
-window.carRefreshInterval = setInterval(function(){
-    console.log("auto refresh car");
-    window.car = [];
-    getCarInfo();
-    layerCarPhoto.redraw();
-    layerCar.redraw();
-},5000);
-/*--------------------------将地图添加到地图上------------------------------------*/
+/*--------------------------将影像地图添加到底图上------------------------------------*/
 function addLayer() {
-    //初始化地图图层
+    //初始化影像图层
     photoMap = new SuperMap.Layer.TiledDynamicRESTLayer("影像", urlPhotoMap, null, {maxResolution: "auto"}, {
         transparent: true,
         cacheEnabled: false
@@ -139,6 +124,7 @@ function addLayer2() {
     selectFeatureCar.activate();
     selectFeature.activate();
 }
+//切换图层的时候，执行此方法
 function changeMap() {
     if (bt == false) {
         layerMap.setVisibility(false);
@@ -209,6 +195,15 @@ function changeMap() {
         cleans();
     }
 }
+
+/*********************5s refresh car layer*****************************/
+// window.carRefreshInterval = setInterval(function(){
+//     console.log("auto refresh car");
+//     window.car = [];
+//     getCarInfo();
+//     layerCarPhoto.redraw();
+//     layerCar.redraw();
+// },5000);
 
 /*----------------------------------------控制图层显示隐藏-----------------------------------*/
 /*
@@ -428,29 +423,34 @@ function changeLayer() {
     $('#cameradetailsWin').hide();
 }
 /*--------------------------滚轮滑动时纠正弹窗位置------------------------------------*/
+
+/*---------------------------鼠标滚轴监听事件-------------------------------*/
+if (document.addEventListener) {
+    document.addEventListener('DOMMouseScroll', mousewheelupdate, false);
+    console.log('zhangheng滚轮事件触发了')
+}//W3C
+window.onmousewheel = document.onmousewheel = mousewheelupdate;//IE/Opera/Chrome
+
 function mousewheelupdate(e) {
     if (e.wheelDelta > 0) {
         if (jb == map.getNumZoomLevels() - 1) {
             fla = true
-        }
-        if (jb < map.getNumZoomLevels() - 1) {
+        }else if(jb < map.getNumZoomLevels() - 1) {
             jb++;
-            var fla = false
+           fla = false
         }
 
     } else {
         if (jb > 0) {
             jb--;
-            var fla = false
-        }
-        if (jb == 0) {
+            fla = false
+        } else if (jb == 0) {
             fla = true
         }
     }
     if (jb == map.getZoom() && fla == false) {
         updatePop();
-    }
-    if (jb != map.getZoom()) {
+    } else if (jb != map.getZoom()) {
         jb = map.getZoom()
     }
 }
@@ -712,3 +712,5 @@ function createCircle(origin, radius, sides, r, angel) {
     return geo;
 }
 
+//初始化地图
+init();
