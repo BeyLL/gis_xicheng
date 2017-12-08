@@ -155,6 +155,7 @@ function onFeatureSelected(feature) {
         return false;
     }
     flag = true;
+
     var cam_id = feature.style.graphicZIndex;
     var cam_name = feature.style.dataName;
     var cam_addr = feature.style.dataAddr;
@@ -178,7 +179,7 @@ function onFeatureSelected(feature) {
         "5px 10px 5px;'><p style='display: inline-block; '>任务下发</p></li></div>",
         null,
         true);
-    map.setCenter(new SuperMap.LonLat(feature.geometry.x, feature.geometry.y), map.getZoom());
+    // map.setCenter(new SuperMap.LonLat(feature.geometry.x, feature.geometry.y), map.getZoom());
     //添加弹窗到map图层
     //popup.autoSize = true;
     map.addPopup(popup);
@@ -203,6 +204,7 @@ function onFeatureSelected(feature) {
     //根据摄像头ID后台获取摄像头信息
     //selectCamInfoByID(feature.style.graphicZIndex);
     //摄像头详细信息点击事件
+    // selectFeature.deactivate();
     $('#detailinfo').click(function () {
         $('#cameradetailsWin').css({'display': 'block'});
         closeMenuInfoWin();//关闭左键选中

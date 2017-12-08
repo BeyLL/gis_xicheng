@@ -478,7 +478,7 @@ function draw() {
         fillColor: drawColor,
         strokeColor: drawColor,
         strokeWidth: 2,
-        graphicZIndex: 1,
+        graphicZIndex: -2000,
         fillOpacity: 0.3
     };
     buffer_flag = true;

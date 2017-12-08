@@ -386,6 +386,11 @@ video{
     width: 100%;
     border-color: #1458a7;
 }
+
+.message .btn{
+    margin:6px 38px 0;
+}
+
 .btn-off{
     margin:10px 30px;
 }
