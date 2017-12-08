@@ -106,7 +106,7 @@ $(document).mousedown(function (e) {
         //禁止鼠标原生右键菜单
         e.cancelBubble = true;
         e.returnValue = false;
-
+        selectFeature.activate();
         $('#search').val('');
         closeMenuInfoWin();//关闭左键选中
         //注销
@@ -427,7 +427,7 @@ function drawpoint(e) {
     buffer_points.push(point)
     console.log(buffer_points)
     //点缓冲
-    buffer(buffer_points, buffer_length)
+    buffer(buffer_points, buffer_length);
     map.events.un({"click": drawpoint});
 }
 

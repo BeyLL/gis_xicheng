@@ -373,6 +373,7 @@ function onFeatureHovered(feature) {
             tabsInfoWin.hide();
         } else {
             addPopUpCircle('featureShadow', feature.geometry.x, feature.geometry.y, map, 'rgba(20,88,167,.3)', '50', '50', 25, 25);
+            console.log("memememmemememmeme")
         }
     });
 }
@@ -844,6 +845,7 @@ function cameraHighlight(name, x, y, map) {
 }
 /*------------------------------------摄像头选择事件-------------------------------------*/
 function cameraSelected(camera) {
+
     camera = JSON.parse(camera);
     //清除弹窗
     // map.removeAllPopup();
@@ -867,6 +869,7 @@ function cameraSelected(camera) {
     feature.geometry.y = camera.cam_loc_lon;
     onFeatureHovered1(feature);
     map.setCenter(new SuperMap.LonLat(camera.cam_loc_lan, camera.cam_loc_lon), map.getZoom());
+    selectFeature.deactivate();
 }
 /*--------------------------------------定义摄像头设置属性---------------------------------*/
 //passionZhang  icon下来图标触发此事件
