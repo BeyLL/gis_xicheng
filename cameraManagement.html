@@ -160,7 +160,7 @@
     <div style="margin-left: 22px">
         <span style="display: inline-block;">摄像头列表</span>
         <span class="Exele" onclick="excel()" style="cursor: pointer;margin-left: 60px">
-             <img src="images/Exele-out.png"><span>导出</span>
+             <img src="images/Exele-out.png" style="background-color: rgb(20, 88, 167)"><span>导出</span>
         </span>
     </div>
     <div class="searchCam">
@@ -314,14 +314,14 @@
 <!--需要导出的摄像头表格-->
 <div id="excelDiv">
     <div class="tableHearder">
-        <h3>摄像头列表</h3>
-        <button type="button" class="btn btn-default btn-excel" aria-label="Left Align"  onclick="excelOff()">
-            取消
-        </button>
-        <button type="button" class="btn btn-default btn-excel" aria-label="Left Align" onclick="excelOut()">
-            导出
-        </button>
-    </div>
+    <h3>摄像头列表</h3>
+    <button type="button" class="btn btn-default btn-excel" aria-label="Left Align"  onclick="excelOff()">
+        取消
+    </button>
+    <button type="button" class="btn btn-default btn-excel" aria-label="Left Align" onclick="excelOut()">
+        导出
+    </button>
+</div>
     <table class="table table-bordered table-hover" id="sxtlb_tab" border="1">
         <thead>
         <tr id='sxtHead'></tr>
@@ -330,7 +330,7 @@
 </div>
 <!--需要导出的汽车表格-->
 <div id="excelDivCar">
-    <div class="tableHearder">
+    <div class="tableHearder" style="position:fixed;margin-top:5px;">
         <h3>汽车列表</h3>
         <button type="button" class="btn btn-default btn-excel" aria-label="Left Align"  onclick="excelOffCar()">
             取消
@@ -353,7 +353,7 @@
 <script type="text/javascript">
     $(function () {
         $("[data-toggle='tooltip']").tooltip();
-        $('.tooltip').css('left', '-65px')
+        $('.tooltip').css('left', '-65px');
     });
 </script>
 <!--修改样式-->

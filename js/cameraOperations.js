@@ -278,7 +278,7 @@ $(function () {
         })
     });
 });
-/*--------------------------摄像头点选高亮事件--------------------------*/
+/*----摄像头点选高亮事件----*/
 var pointPops = [];
 var popNum = [];
 function pointClick(feature) {
@@ -319,7 +319,7 @@ function pointClick(feature) {
         }
     }
 }
-/*--------------------------定义关闭Menu点击事件--------------------------*/
+/*----定义关闭Menu点击事件-----*/
 function closeMenuInfoWin() {
     if (flag) {
         flag = false;
@@ -339,7 +339,7 @@ function onFeatureHovered(feature) {
             if (camera_setting[i].attr_show_1) {
                 contentHtml += "<li id='gz' style='line-height: 13px;color: #333333;font-size: 12px;padding:5px;border:1px solid royalblue;border-bottom:none'>" +
                     "<span style='display: inline-block;width: 45%;vertical-align: top;text-align:right'>" + camera_setting[i].attr_desc + "：" + "</span>" +
-                    "<span style='display: inline-block;width: 55%;text-align:right'>" + cam_info[camera_setting[i].attr_name] + "</span></li>"
+                    "<span style='display: inline-block;width: 55%;text-align:left'>" + cam_info[camera_setting[i].attr_name] + "</span></li>"
             }
         }
         var popup1 = new SuperMap.Popup(
@@ -970,7 +970,7 @@ function selectExcel() {
             //add By KingDragon
             window.camera_attrs = date1;
             for (var i = 1; i < date1.length; i++) {
-                html += "<td class='cam_td'>" + date1[i].attr_desc + "</td>"
+                html += "<th class='cam_td'>" + date1[i].attr_desc + "</th>"
             }
             $('#sxtHead').html(html)
             var html = '';

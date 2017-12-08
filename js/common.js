@@ -92,9 +92,8 @@ function startPics(totalPics) {
         imgheight: 24,//每张图片的高度偏移量
         count: totalPics,
         offsetX: 0,
-        NumBtn: false,
         title: false,
-        setZoom: .8,
+        setZoom: .8
     });
 }
 /*----------------------------------------初始化手机用户-----------------------------------*/

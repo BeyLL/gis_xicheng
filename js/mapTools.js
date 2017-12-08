@@ -96,7 +96,6 @@ function hcQuery() {
         if ($("#search").val() != "") {
             return;
         }
-        //$('#searchSelect').val('');
         buffer_length = 100;
         win.alert('提示', '仅工具栏第一栏可以设置缓冲区')
     }
@@ -104,6 +103,10 @@ function hcQuery() {
 /*-----------------------------------右键结束-----------------------------*/
 $(document).mousedown(function (e) {
     if (3 == e.which) {
+        //禁止鼠标原生右键菜单
+        e.cancelBubble = true;
+        e.returnValue = false;
+
         $('#search').val('');
         closeMenuInfoWin();//关闭左键选中
         //注销
@@ -129,7 +132,8 @@ $(document).mousedown(function (e) {
 function vectorControl() {
     //取消矢量选择事件
     // selectFeature.deactivate();
-    //selectFeatureCar.deactivate();
+    // selectFeatureCar.deactivate();
+
     buffer_points.splice(0, buffer_points.length);//清空数组
     switch (toolsNum) {
         case 1:
@@ -260,7 +264,6 @@ function hz() {
         strokeDashstyle: 'dash'
     };
     toolsNum = 1;
-    // clean();
     vectorControl();
     SuperMap.Handler.Path.prototype.down = function (a) {
         var ePoint = map.getLonLatFromPixel(a.xy);
@@ -429,7 +432,6 @@ function drawpoint(e) {
 }
 
 /*----------------------------矩形选-----------------------------*/
-/*---------------------------矩形-------------------------------*/
 drowLayer1 = new SuperMap.Layer.Vector("DrowLayer1", {
     styleMap: new SuperMap.StyleMap(
         new SuperMap.Style({
@@ -469,17 +471,15 @@ SuperMap.Handler.Box.prototype.moveBox = function (xy) {
         "#fff",
         map);
 };
-
 drawBounds = new SuperMap.Control.DrawFeature(drowLayer1, SuperMap.Handler.Box);
 drawBounds.events.on({"featureadded": drawCompleted22, "includeXY": true});
-//矩形
 function draw() {
     drowLayer1.style = {
         fillColor: drawColor,
         strokeColor: drawColor,
         strokeWidth: 2,
         graphicZIndex: 1,
-        fillOpacity: 0.4
+        fillOpacity: 0.3
     };
     buffer_flag = true;
     toolsNum = 3;
@@ -517,7 +517,6 @@ function drawCompleted22(drawBoundsArgs) {
 }
 
 /*----------------------------圆形选-----------------------------*/
-/*---------------------------圆形-------------------------------*/
 drawLayer1 = new SuperMap.Layer.Vector("DrawLayer", {
     styleMap: new SuperMap.StyleMap(
         new SuperMap.Style({
@@ -634,7 +633,6 @@ function drawCricleCompleted(eventArgs) {
 }
 
 /*----------------------------多边形选-----------------------------*/
-/*---------------------------多边形-------------------------------*/
 drowLayer = new SuperMap.Layer.Vector("DrowLayer", {
     styleMap: new SuperMap.StyleMap(
         new SuperMap.Style({
@@ -647,7 +645,6 @@ drowLayer = new SuperMap.Layer.Vector("DrowLayer", {
     )
 });
 drawPolygon = new SuperMap.Control.DrawFeature(drowLayer, SuperMap.Handler.Polygon);
-//多边形选
 function dbxx() {
     drowLayer.style = {
         fillColor: drawColor,
@@ -749,7 +746,6 @@ function drawPolygonCompleted(eventArgs) {
     drawPolygon.deactivate();
 }
 /*----------------------------放大-----------------------------*/
-//放大
 function fd() {
     $('.layer-list').css({'display': 'none'});
     toolsNum = 6;
@@ -761,7 +757,6 @@ function fd() {
 
 }
 /*----------------------------缩小-----------------------------*/
-//缩小
 function sx() {
     $('.layer-list').css({'display': 'none'});
     toolsNum = 7;
@@ -773,7 +768,6 @@ function sx() {
 
 }
 /*----------------------------全图显示-----------------------------*/
-//全图显示
 function gx() {
     $('.layer-list').css({'display': 'none'});
     toolsNum = 8;
@@ -781,7 +775,6 @@ function gx() {
     vectorControl();
 }
 /*----------------------------标记-----------------------------*/
-//标记
 var fla = false;
 /*---------------------------标记-------------------------------*/
 markers = new SuperMap.Layer.Markers("Markers");
@@ -1020,7 +1013,7 @@ function cmj() {
         this.lastDown = a.xy;
         this.stoppedDown = b;
         return !b
-    }
+    };
     SuperMap.Handler.Path.prototype.move = function (a) {
         if (this.stoppedDown && this.freehandMode(a)) {
             if (this.persist) {
