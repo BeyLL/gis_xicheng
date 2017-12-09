@@ -16,7 +16,7 @@ function cameraSelectCircle(x,y,radius,callback){
             token:token,
             centerX:y,
             centerY:x,
-            radius:radius,
+            radius:radius
         }
     }
     $.ajax(settings).done(function (response) {

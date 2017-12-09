@@ -221,6 +221,7 @@ function onFeatureSelectedCar(feature) {
 }
 /*----------------------------鼠标悬停弹出Tabs popup，调用此函数。-------------------------*/
 function onFeatureHoveredCar(feature) {
+    console.log('汽车弹窗弹出了没有')
     //根据汽车ID后台获取汽车信息
     selectCarInfoByID(feature.style.graphicZIndex);
     var contentHtml = "";

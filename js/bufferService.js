@@ -69,7 +69,7 @@ function buffer(points, len) {
             bufferAnalystProcess(Line, len);
 
         } else if (toolsNum > 1 && toolsNum < 6) {
-            console.log('开始解析缓冲区')
+            console.log('开始解析缓冲区');
             linearRings = new SuperMap.Geometry.LinearRing(points),
                 region = new SuperMap.Geometry.Polygon([linearRings]);
             bufferAnalystProcess(region, len);
@@ -181,7 +181,7 @@ function bufferAnalystProcess(Line, len) {
             leftDistance: bufferDistance,
             rightDistance: bufferDistance,
             semicircleLineSegment: 30
-        }),
+        })
         geoBufferAnalystParam = new SuperMap.REST.GeometryBufferAnalystParameters({
             sourceGeometry: Line,
             bufferSetting: bufferSetting
@@ -204,9 +204,9 @@ function bufferAnalystCompleted(BufferAnalystEventArgs) {
     bufferResultGeometry = BufferAnalystEventArgs.result.resultGeometry;
     window.allPoints = bufferResultGeometry.components[0].components[0].components;
     bufferfeature.geometry = bufferResultGeometry;
+    console.log(styleRegion,'缓冲区解析完成啦爱啦啦啦')
     bufferfeature.style = styleRegion;
     resultLayer.addFeatures(bufferfeature);
-    console.log('缓冲区的解析已经完成')
     if (toolsNum == 1) {
         //绘制线路查询
         var polPoints = [];

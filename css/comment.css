@@ -1,54 +1,58 @@
-﻿*{
+﻿* {
     margin: 0;
     padding: 0;
 }
-body{
+
+body {
     min-width: 1024px;
     overflow: hidden;
 }
+
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
     width: 10px;
     height: 10px;
     background-color: transparent;
 }
+
 /*定义滚动条轨道 内阴影+圆角*/
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px transparent;
     border-radius: 10px;
     background-color: transparent;
 }
+
 /*定义滑块 内阴影+圆角*/
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px transparent;
     background-color: #1458a7;
 }
+
 /*滑块效果*/
-::-webkit-scrollbar-thumb:hover
-{
+::-webkit-scrollbar-thumb:hover {
     border-radius: 5px;
     -webkit-box-shadow: inset 0 0 5px transparent;
     background: #1458a7;
 }
+
 /*IE滚动条颜色*/
 html {
-    scrollbar-face-color:#1458a7;/*滚动条颜色*/
-    scrollbar-highlight-color:transparent;
-    scrollbar-3dlight-color:transparent;
-    scrollbar-darkshadow-color:transparent;
-    scrollbar-Shadow-color:transparent;/*滑块边色*/
-    scrollbar-arrow-color:transparent;/*箭头颜色*/
-    scrollbar-track-color:transparent;/*背景颜色*/
+    scrollbar-face-color: #1458a7; /*滚动条颜色*/
+    scrollbar-highlight-color: transparent;
+    scrollbar-3dlight-color: transparent;
+    scrollbar-darkshadow-color: transparent;
+    scrollbar-Shadow-color: transparent; /*滑块边色*/
+    scrollbar-arrow-color: transparent; /*箭头颜色*/
+    scrollbar-track-color: transparent; /*背景颜色*/
 }
-li{
+
+li {
     list-style: none;
 }
+
 /*header*/
-.header{
+.header {
     position: relative;
     width: 100%;
     height: 70px;
@@ -58,62 +62,74 @@ li{
     z-index: 1;
     text-align: center;
 }
-.text{
+
+.text {
     position: absolute;
     left: 120px;
 }
-.text1{
+
+.text1 {
     position: absolute;
     bottom: -10px;
     font-size: 20px;
 }
-.user{
+
+.user {
     position: absolute;
     right: 195px;
     top: 5px;
     vertical-align: middle;
 }
-.home{
+
+.home {
     position: absolute;
     right: 70px;
     top: 5px;
     color: #fff;
 }
-.h-line{
+
+.h-line {
     position: relative;
     top: 70px;
     height: 3px;
     background: url(../images/line.png);
 }
-a:hover, a:active{
+
+a:hover, a:active {
     color: red;
     text-decoration: none;
 }
+
 /*摄像头信息列表*/
-.camera-list{
+.camera-list {
     background: transparent;
     border: 1px solid transparent;
     position: absolute;
     left: 30px;
 }
-.camera-list:focus{
+
+.camera-list:focus {
     outline: none;
 }
+
 /*摄像头列表*/
-.camList{
-    top:19%;
+.camList {
+    top: 19%;
     z-index: 2;
 }
-.carList{
-    top:28%;
+
+.carList {
+    top: 28%;
     z-index: 2;
 }
-.layerList{
-    top:12%;
+
+.layerList {
+    top: 12%;
     z-index: 2;
 }
+
 /*摄像头选择框*/
-.camera-search{
+.camera-search {
     min-width: 500px;
     width: 50%;
     position: absolute;
@@ -122,6 +138,7 @@ a:hover, a:active{
     z-index: 1;
     display: inline-block;
 }
+
 /*摄像头搜索框*/
 .search {
     min-width: 500px;
@@ -129,17 +146,20 @@ a:hover, a:active{
     width: 100%;
     height: 40px;
 }
-.search input{
+
+.search input {
     min-width: 100px;
     width: 20%;
     height: 42px;
     text-indent: 10px;
     font-size: 12px;
 }
-.navbar-nav2{
+
+.navbar-nav2 {
     float: right;
     margin-right: 15%;
 }
+
 /*checkbox样式  */
 input[type="checkbox"] {
     appearance: none;
@@ -147,47 +167,66 @@ input[type="checkbox"] {
     outline: none;
     display: none
 }
+
 label {
     display: inline-block;
     cursor: pointer;
 }
-label input[type="checkbox"]+span {
+
+label input[type="checkbox"] + span {
     width: 30px;
     height: 30px;
     display: inline-block;
     background: url(../images/check.png) no-repeat;
     background-position: 3px 10px;
 }
-label input[type="checkbox"]:checked+span {
+
+label input[type="checkbox"]:checked + span {
     background: url(../images/checked.png) no-repeat;
     background-position: 3px 10px;
 }
+
 /*设置多选框*/
-.camear-settings{
+.camear-settings {
     display: inline-block;
     margin-top: 3px;
 }
-input{
+
+input {
     border: 1px solid rgba(0, 0, 0, .1);
     height: 38px;
 }
-input:focus{
+
+input:focus {
     outline: none;
 }
-.input-group-btn{
+
+.input-group-btn {
     display: inline-block;
     width: 8%;
     height: 42px;
     margin-left: -4px;
 }
-.btn-search{
+
+.btn-search {
     width: 100%;
     height: 100%;
     background: #1458a7;
     color: #fff;
 }
+
+#zoomBox{
+    background:#fff;
+}
+
+#box_contentDiv{
+    z-index:200000;
+    font-size:18px;
+    /*color:black;*/
+}
+
 /*搜索弹出框*/
-.cam-list .dropdown-menu{
+.cam-list .dropdown-menu {
     width: 179px;
     height: 121px;
     margin: -1px;
@@ -195,37 +234,44 @@ input:focus{
     padding-top: 10px;
     overflow-y: scroll;
 }
-.dropdown-menu li a{
+
+.dropdown-menu li a {
     width: 100%;
     color: #666;
     padding: 10px 40px;
     line-height: 14px;
 }
-.dropdown-menu .history a{
+
+.dropdown-menu .history a {
     font-size: 12px;
     display: inline-block;
     margin-left: -42px;
 }
-.history span{
-    margin: 0 10px 20px ;
+
+.history span {
+    margin: 0 10px 20px;
 }
-.glyphicon-time{
+
+.glyphicon-time {
     color: #666;
 }
-.dropdown-menu .history-more a{
+
+.dropdown-menu .history-more a {
     float: right;
     font-size: 12px;
     width: 50%;
     display: inline-block;
     text-align: right;
 }
+
 /*地图切换*/
-.photoMap{
+.photoMap {
     position: absolute;
     bottom: 20px;
     right: 20px;
 }
-#video{
+
+#video {
     width: 33%;
     height: 400px;
     background: #f7f7f7;
@@ -237,27 +283,33 @@ input:focus{
     box-shadow: #999 5px 5px 20px;
     text-align: center;
 }
-#video .Vtext{
+
+#video .Vtext {
     position: relative;
     top: 20px;
 }
-video{
+
+video {
     width: 100%;
     height: 350px;
 }
-#btnPause{
+
+#btnPause {
     position: absolute;
     top: 10px;
     right: 10px;
     z-index: 4;
 }
-.btn-ok{
+
+.btn-ok {
     color: #666;
     font-size: 22px;
 }
-.btn-ok:hover,.btn-ok:focus{
+
+.btn-ok:hover, .btn-ok:focus {
     color: #eee;
 }
+
 /*摄像头列表显示内容*/
 .list-group-item {
     position: relative;
@@ -266,7 +318,8 @@ video{
     background-color: #fff;
     border: 1px solid #ddd;
 }
-.cam-list{
+
+.cam-list {
     width: 280px;
     height: 37%;
     background: rgba(255, 255, 255, .8);
@@ -275,19 +328,23 @@ video{
     left: 30px;
     z-index: 1;
 }
-#car_list{
-    top:30%;
+
+#car_list {
+    top: 30%;
     overflow-y: hidden;
 }
-#car_list .cam-content{
+
+#car_list .cam-content {
     overflow-y: scroll;
 }
-.cam-list span{
+
+.cam-list span {
     font-size: 16px;
     color: #1458a7;
     margin: 11px;
 }
-.cam-content{
+
+.cam-content {
     width: 90%;
     height: 65%;
     border: 2px solid #1458a7;
@@ -295,37 +352,43 @@ video{
     top: 29%;
     left: 5%;
 }
-.cam-button{
+
+.cam-button {
     width: 90%;
     height: 15%;
     position: absolute;
     top: 8%;
     left: 6%;
 }
-.cam-btn{
+
+.cam-btn {
     width: 38%;
     background: transparent;
     border: transparent;
     position: absolute;
     top: 0;
 }
-.cam-btn:focus{
+
+.cam-btn:focus {
     outline: none;
 }
-.picture{
+
+.picture {
     position: absolute;
-    top:0;
+    top: 0;
     z-index: 10;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, .2);
 }
-.picture .car-pic{
+
+.picture .car-pic {
     position: relative;
     top: 38%;
     left: 32%;
 }
-#pic{
+
+#pic {
     position: absolute;
     top: 40%;
     right: 8%;
@@ -334,22 +397,63 @@ video{
     color: #fff;
     font-size: 34px;
 }
-#pic:hover,#pic:focus{
+
+#pic:hover, #pic:focus {
     color: #eee;
 }
+
 /*轮播图*/
-.jcImgScroll{position:relative;height:380px;margin:15% auto 0 auto;}
-.jcImgScroll li{border:1px solid #ccc;}
-.jcImgScroll li a{background:#fff;display:block;position:relative;z-index:99;}
-.jcImgScroll li.loading a{background:#fff url(../images/loading.gif) no-repeat center center;}
-.jcImgScroll li img,.jcImgScroll li,.jcImgScroll em,.jcImgScroll dl{display:none;border:0 none;}
-.jcImgScroll li img{width: 100%;height: 100%;}
-.jcImgScroll em.sPrev{background:url(../images/arrow-left.png) no-repeat left center;}
-.jcImgScroll em.sNext{background:url(../images/arrow-right.png) no-repeat right center;}
-.jcImgScroll dl dd{background:url(../images/NumBtn.png) no-repeat 0 bottom;text-indent:-9em;}
-.jcImgScroll dl dd:hover,.jcImgScroll dl dd.curr{background-position:0 0;}
+.jcImgScroll {
+    position: relative;
+    height: 380px;
+    margin: 15% auto 0 auto;
+}
+
+.jcImgScroll li {
+    border: 1px solid #ccc;
+}
+
+.jcImgScroll li a {
+    background: #fff;
+    display: block;
+    position: relative;
+    z-index: 99;
+}
+
+.jcImgScroll li.loading a {
+    background: #fff url(../images/loading.gif) no-repeat center center;
+}
+
+.jcImgScroll li img, .jcImgScroll li, .jcImgScroll em, .jcImgScroll dl {
+    display: none;
+    border: 0 none;
+}
+
+.jcImgScroll li img {
+    width: 100%;
+    height: 100%;
+}
+
+.jcImgScroll em.sPrev {
+    background: url(../images/arrow-left.png) no-repeat left center;
+}
+
+.jcImgScroll em.sNext {
+    background: url(../images/arrow-right.png) no-repeat right center;
+}
+
+.jcImgScroll dl dd {
+    /*background: url(../images/NumBtn.png) no-repeat 0 bottom;
+    text-indent: -9em;*/
+    display:none;
+}
+
+.jcImgScroll dl dd:hover, .jcImgScroll dl dd.curr {
+    background-position: 0 0;
+}
+
 /*信息采集*/
-.message{
+.message {
     position: absolute;
     top: 50%;
     left: 20px;
@@ -361,13 +465,16 @@ video{
     border: 1px solid #1458a7;
     border-radius: 10px;
 }
-.message p{
+
+.message p {
     margin: 6px 38px 0;
 }
-.meg-title{
+
+.meg-title {
     text-align: center;
 }
-.meg-describe{
+
+.meg-describe {
     width: 75%;
     height: 95px;
     resize: none;
@@ -375,48 +482,57 @@ video{
     margin-left: 38px;
     padding: 8px;
 }
-.message .meg-describe p{
+
+.message .meg-describe p {
     margin: 10px;
 }
-.message #camera_name{
-    width: 100%;
-    border-color: #1458a7;
-}
-.message #camera_addr{
+
+.message #camera_name {
     width: 100%;
     border-color: #1458a7;
 }
 
-.message .btn{
-    margin:6px 38px 0;
+.message #camera_addr {
+    width: 100%;
+    border-color: #1458a7;
 }
 
-.btn-off{
-    margin:10px 30px;
+.message .btn {
+    margin: 6px 38px 0;
 }
-.btn-sure{
+
+.btn-off {
+    margin: 10px 30px;
+}
+
+.btn-sure {
     float: right;
     margin-right: 10%;
     color: #fff;
 }
-.cam-content .car-li{
+
+.cam-content .car-li {
     margin: 5px;
 }
-.cam-content .car-li img{
+
+.cam-content .car-li img {
     position: relative;
     top: 15px;
     width: 12%;
 }
-.cam-content .car-li .sp-text{
+
+.cam-content .car-li .sp-text {
     display: inline-block;
     margin: 5px 5px 5px 18px;
 }
+
 .cam-content .car-li .sp-text1 {
     display: inline-block;
     font-size: 12px;
     margin-left: 45px;
 }
-.footer{
+
+.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -425,48 +541,56 @@ video{
     text-align: left;
     color: #333;
 }
-.chacha{
+
+.chacha {
     width: 30px;
-    height:30px;
+    height: 30px;
     position: absolute;
     right: 0;
     top: 5px;
 }
-.chacha i{
+
+.chacha i {
     font-size: 20px;
 }
-.chachca i:hover{
+
+.chachca i:hover {
     cursor: pointer;
     color: #ccc;
 }
+
 /*地图操作框*/
-.btnGroupMap{
+.btnGroupMap {
     position: absolute;
-    top:50%;
+    top: 50%;
     margin-top: -200px;
     right: 30px;
     z-index: 1;
     width: 42px;
     background: #fff;
     border: 1px solid #1458a7;
-    box-shadow: rgba(20,88,167,.5) 2px 2px 2px;
+    box-shadow: rgba(20, 88, 167, .5) 2px 2px 2px;
 }
-.btnGroupMap .btn{
+
+.btnGroupMap .btn {
     width: 40px;
     border: none;
     background: #fff;
 }
+
 .btn:focus {
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
     background: #1098f7;
 }
-.btnGroupMap .btn img{
+
+.btnGroupMap .btn img {
     width: 14px;
     height: 14px;
 }
+
 /*图层信息列表*/
-.layer-list{
+.layer-list {
     position: absolute;
     top: 100px;
     left: 85px;
@@ -476,34 +600,41 @@ video{
     background: #fff;
     font-size: 16px;
 }
-.layerContent{
+
+.layerContent {
     width: 100%;
 }
-.layerContent ul .layerLi{
+
+.layerContent ul .layerLi {
     padding-left: 10px;
     background: #fff;
     color: #333;
 }
-.layerLi .name{
+
+.layerLi .name {
     position: relative;
-    top:-7px;
+    top: -7px;
 }
-.layerLi img{
+
+.layerLi img {
     position: relative;
-    top:-7px;
+    top: -7px;
     right: -30px;
 }
-.layerContent ul .active{
+
+.layerContent ul .active {
     background: #1458a7;
     color: #fff;
 }
-.layerLi .layerCam{
+
+.layerLi .layerCam {
     font-size: 14px;
     color: #999;
     margin-left: 20px;
 }
+
 /*摄像头类型*/
-.camType{
+.camType {
     position: absolute;
     right: 225px;
     z-index: 1;
@@ -513,87 +644,103 @@ video{
     padding: 7px;
     font-size: 12px;
 }
-.camType1{
+
+.camType1 {
     bottom: 25px;
 }
-.camType2{
+
+.camType2 {
     bottom: 70px;
 }
-.camType span{
+
+.camType span {
     display: inline-block;
     text-align: center;
     margin-right: 5px;
 }
-.camType img{
+
+.camType img {
     width: 15px;
 }
-#searchCamSelect{
-    width:140px;
+
+#searchCamSelect {
+    width: 140px;
     height: 27px;
     padding: 0 10px;
     border: none;
     outline: none;
     border-radius: 5px 0 0 5px;
 }
-#searchCarSelect{
-    width:140px;
+
+#searchCarSelect {
+    width: 140px;
     height: 27px;
     padding: 0 10px;
     border: none;
     outline: none;
     border-radius: 5px 0 0 5px;
 }
-.cam-list .searchCam{
-     margin-left: 24px;
-     width: 80%;
-     height: 35px;
- }
-.cam-list .searchCam span{
+
+.cam-list .searchCam {
+    margin-left: 24px;
+    width: 80%;
+    height: 35px;
+}
+
+.cam-list .searchCam span {
     font-size: 16px;
     margin: 0;
     color: #fff;
 }
+
 .cam-list .input-group-btn {
     display: inline-block;
     width: 18%;
     height: 30px;
 }
+
 .cam-list .searchCam input {
     width: 80%;
     height: 27px;
     text-indent: 10px;
     font-size: 12px;
 }
-.cam-list .searchCar{
+
+.cam-list .searchCar {
     margin-left: 24px;
     width: 80%;
     height: 35px;
 }
-.cam-list .searchCar span{
+
+.cam-list .searchCar span {
     font-size: 16px;
     margin: 0;
     color: #fff;
 }
+
 .cam-list .input-group-btn {
     display: inline-block;
     width: 18%;
     height: 30px;
 }
+
 .cam-list .searchCar input {
     width: 80%;
     height: 27px;
     text-indent: 10px;
     font-size: 12px;
 }
-#searchSelect{
-    width:135px;
+
+#searchSelect {
+    width: 135px;
     padding: 0 10px;
     border: none;
     outline: none;
     border-radius: 5px 0 0 5px;
 }
+
 /*导出列表*/
-#excelDiv,#excelDivCar{
+#excelDiv, #excelDivCar {
     width: 80%;
     height: 70%;
     display: none;
@@ -606,46 +753,54 @@ video{
     top: 15%;
     z-index: 1;
 }
-#excelDiv h3{
+
+#excelDiv h3 {
     color: #1458a7;
 }
-#excelDiv table{
-    display:block;
-    height:360px;
+
+#excelDiv table {
+    display: block;
+    height: 360px;
     overflow: auto;
     position: relative;
     border: 1px solid #ddd;
     border-radius: 5px;
     white-space: nowrap;
 }
-#excelDiv table thead{
+
+#excelDiv table thead {
     background: #147bf3;
     color: #fff;
 }
-#excelDivCar h3{
+
+#excelDivCar h3 {
     color: #1458a7;
 }
-#excelDivCar table{
+
+#excelDivCar table {
     overflow: scroll;
     position: relative;
     border: 1px solid #ddd;
     border-radius: 5px;
     white-space: nowrap;
 }
-#excelDivCar table thead{
+
+#excelDivCar table thead {
     background: #147bf3;
     color: #fff;
 }
+
 /*缓冲区距离*/
-#hcinput{
-    width:150px;
+#hcinput {
+    width: 150px;
     padding: 0 10px;
     border: none;
     outline: none;
     border-radius: 5px;
 }
-@media screen and  (max-width: 1366px){
-    body .cam-list{
+
+@media screen and  (max-width: 1366px) {
+    body .cam-list {
         width: 280px;
         height: 37%;
         background: rgba(255, 255, 255, .8);
@@ -654,7 +809,8 @@ video{
         left: 30px;
         z-index: 1;
     }
-    body .cam-content{
+
+    body .cam-content {
         width: 90%;
         height: 65%;
         border: 2px solid #1458a7;
@@ -662,14 +818,17 @@ video{
         top: 32%;
         left: 5%;
     }
+
     body .photoMap {
         position: absolute;
         bottom: 20px;
         right: -34px;
     }
-    body .photoMap img{
+
+    body .photoMap img {
         width: 68%;
     }
+
     body .camType {
         position: absolute;
         right: 165px;
@@ -680,12 +839,15 @@ video{
         padding: 3px;
         font-size: 12px;
     }
-    body .camType img{
+
+    body .camType img {
         width: 12px;
     }
+
     body .camType2 {
         bottom: 63px;
     }
+
     body .btnGroupMap {
         position: absolute;
         top: 50%;
@@ -695,13 +857,15 @@ video{
         width: 30px;
         background: #fff;
         border: 1px solid #1458a7;
-        box-shadow: rgba(20,88,167,.5) 2px 2px 2px;
+        box-shadow: rgba(20, 88, 167, .5) 2px 2px 2px;
     }
-    body .btnGroupMap .btn{
+
+    body .btnGroupMap .btn {
         width: 28px;
         font-size: 12px;
         padding: 6px;
     }
+
     body .camera-search {
         min-width: 500px;
         width: 60%;
@@ -711,6 +875,7 @@ video{
         z-index: 1;
         display: inline-block;
     }
+
     body #searchSelect {
         width: 115px;
         padding: 0;
@@ -718,6 +883,7 @@ video{
         outline: none;
         border-radius: 5px 0 0 5px;
     }
+
     body #hcinput {
         width: 125px;
         padding: 0;
@@ -725,7 +891,8 @@ video{
         outline: none;
         border-radius: 5px;
     }
-    body .header{
+
+    body .header {
         position: relative;
         width: 100%;
         height: 60px;
@@ -735,33 +902,39 @@ video{
         z-index: 1;
         text-align: center;
     }
-    body .text img{
+
+    body .text img {
         width: 80%;
     }
-    body .text{
+
+    body .text {
         position: absolute;
         left: 100px;
     }
-    body .h-line{
-        top:60px;
+
+    body .h-line {
+        top: 60px;
     }
+
     body .btn-sure {
         float: right;
         margin: 0;
         color: #fff;
         position: absolute;
-        top:0;
+        top: 0;
         right: -60px;
     }
 }
-@media screen and  (min-width: 0px) and  (max-width: 768px){
-    body .navbar-nav1{
+
+@media screen and  (min-width: 0px) and  (max-width: 768px) {
+    body .navbar-nav1 {
         position: absolute;
         top: -8px;
         left: -25%;
         max-width: 100px;
     }
-    body .navbar-nav1>li>a{
+
+    body .navbar-nav1 > li > a {
         position: absolute;
         top: 0;
         left: 115px;
@@ -769,26 +942,28 @@ video{
         display: inline-block;
         background: rgba(255, 255, 255, 1);
     }
-    body .navbar-nav1 .input-group-btn{
+
+    body .navbar-nav1 .input-group-btn {
         position: absolute;
         top: 0;
         left: 104px;
     }
-    body .navbar-nav2{
+
+    body .navbar-nav2 {
         position: absolute;
         top: -7px;
         right: 45%;
         margin-right: 0;
     }
+
     body .btn-sure {
         float: right;
         margin: 0;
         color: #fff;
         position: absolute;
         right: -61px;
-        top:-40px;
+        top: -40px;
     }
-
 
 }
 

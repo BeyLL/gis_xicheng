@@ -72,7 +72,7 @@ function init() {
         )
     });
 
-    /*---------------------------摄像头矢量图层-------------------------------*/
+    /*---------------------------摄像头图层,矢量图层-------------------------------*/
     //构建 矢量覆盖物 图层。
     vectors = new SuperMap.Layer.Vector("vectors");
     //矢量覆盖物回传事件
@@ -251,15 +251,15 @@ function layerShow(type) {
             break;
     }
     /*----------------------------图层切换点击事件----------------------------------*/
+    //逻辑有问题
     if ($('#all-layer').prop("checked")) {
-        console.log('---------------------');
-        console.log(bt);
+        console.log('是不是全选？？');
         //bt为true时为影像地图
-        console.log('全选');
         //图标
         $('.carList').show();
         $('.camList').show();
         $('.carList').css('top', '28%');
+        selectFeatureCar.activate();
 
         //图标属性
         $('.camType1').show();//摄像头列表
@@ -278,8 +278,7 @@ function layerShow(type) {
         $('#cam_list').hide();
         $('#car_list').hide();
         //控制事件是否激活
-        selectFeature.activate();
-        selectFeatureCar.activate();
+
         layerFlagNum = 3;
         clean();
     } else if ($('#cam-layer').prop("checked") && !$('#car-layer').prop("checked")) {
@@ -296,7 +295,7 @@ function layerShow(type) {
         //图标属性
         $('.camType1').show();
         $('.camType2').hide();
-        $('.camType2').css('bottom', '65px')
+        $('.camType2').css('bottom', '65px');
         $('#layer_list').hide();
 
         //车列表隐藏
@@ -313,8 +312,7 @@ function layerShow(type) {
         }
         layerFlagNum = 1;
         clean();
-    }
-    else if (!$('#cam-layer').prop("checked") && $('#car-layer').prop("checked")) {
+    } else if (!$('#cam-layer').prop("checked") && $('#car-layer').prop("checked")) {
         console.log('选中车辆');
         map.setLayerIndex(vectors, map.layers.length - 2);
         map.setLayerIndex(vectorsCar, map.layers.length - 1);

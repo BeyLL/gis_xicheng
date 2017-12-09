@@ -6,8 +6,8 @@ var map,
     layerCameraPhoto,
     layerCarPhoto,
     photoMap,
-    vectors,
-    vectorsCar,
+    vectors,  //矢量图层
+    vectorsCar,  //矢量汽车图层
     menuInfoWin = null,
     tabsInfoWin = null,
     featureShadow = null,
@@ -296,9 +296,9 @@ function hz() {
         this.mouseDown = true;
         this.lastDown = a.xy;
         this.stoppedDown = b;
-        console.log(b)
+        console.log(b);
         return !b
-    }
+    };
     SuperMap.Handler.Path.prototype.move = function (a) {
         if (lineDownFlag == true) {
             $("#huzhiPopup" + lineDownNum).remove();
@@ -404,7 +404,7 @@ pointLayer = new SuperMap.Layer.Vector('pointLayer', {
 function dx() {
     toolsNum = 2;
     // clean();
-    vectorControl()
+    vectorControl();
 }
 function drawpoint(e) {
     pointLayer.removeAllFeatures();
@@ -438,12 +438,15 @@ drowLayer1 = new SuperMap.Layer.Vector("DrowLayer1", {
             fillColor: drawColor,
             strokeColor: drawColor,
             strokeWidth: 2,
-            graphicZIndex: 1,
+            graphicZIndex: -20000,
             fillOpacity: 0.4
         })
     )
 });
+//在点击矩形选的时候会执行这个方法，而且是实时执行的。
 SuperMap.Handler.Box.prototype.moveBox = function (xy) {
+    console.log('哪里执行这个方法')
+
     $('#box').remove();
     var startX = this.dragHandler.start.x;
     var startY = this.dragHandler.start.y;
@@ -462,7 +465,7 @@ SuperMap.Handler.Box.prototype.moveBox = function (xy) {
     var cPoint = map.getLonLatFromPixel(lonlat);
     var ePoint = map.getLonLatFromPixel(xy);
     var boundWidth = ePoint.lon - cPoint.lon;
-    var boundLength = cPoint.lat - ePoint.lat
+    var boundLength = cPoint.lat - ePoint.lat;
     var Area = (boundWidth * boundLength).toFixed(2);
     addPopUp("box",
         cPoint.lon + boundWidth / 8,
@@ -470,6 +473,7 @@ SuperMap.Handler.Box.prototype.moveBox = function (xy) {
         Math.abs(boundWidth.toFixed(2)) + " X " + Math.abs(boundLength.toFixed(2)) + 'm' + '<br/>' + '面积：' + Math.abs(Area) + ' ㎡',
         "#fff",
         map);
+    selectFeature.deactivate()
 };
 drawBounds = new SuperMap.Control.DrawFeature(drowLayer1, SuperMap.Handler.Box);
 drawBounds.events.on({"featureadded": drawCompleted22, "includeXY": true});
@@ -487,6 +491,7 @@ function draw() {
     vectorControl();
 }
 function drawCompleted22(drawBoundsArgs) {
+    console.log('举行选-------------------')
     var feature = drawBoundsArgs.feature;
     drowLayer1.addFeatures(feature);
     var bounds = feature.geometry.bounds;
